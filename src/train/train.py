@@ -5,7 +5,7 @@ import torch.optim as optim
 
 def train_model(model, dataloader, num_epochs, learning_rate, device):
     criterion = nn.MSELoss()
-    optimizer = optim.Adam(model.parameters(), lr=learning_rate)
+    optimizer = optim.RMSprop(model.parameters(), lr=learning_rate)
     model.train()
 
     losses = []

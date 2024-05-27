@@ -3,9 +3,9 @@ config = {
     'sequence_length': 24,
     'batch_size': 128,
     'input_size': 6,  # number of features
-    'hidden_size': 128,
+    'hidden_size': 50,
     'output_size': 1,
-    'num_layers': 3,
+    'num_layers': 2,
     'num_epochs': 10,
     'learning_rate': 0.00002
 }
