@@ -5,6 +5,7 @@ from src.model.attention_lstm import AttentionLSTM
 from src.visualization.visualize import plot_prediction
 from src.config import config
 
+
 def main():
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     print(f'Using device: {device}')
@@ -35,6 +36,7 @@ def main():
     predicted_temps = [predicted_temp] * config['sequence_length']
 
     plot_prediction(dates, actual_temps, predicted_temps)
+
 
 if __name__ == '__main__':
     main()
