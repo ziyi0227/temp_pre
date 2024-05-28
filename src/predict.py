@@ -1,9 +1,11 @@
 import torch
+import numpy as np
 from datetime import datetime, timedelta
 from src.data.data_loader import load_data
 from src.model.attention_lstm import AttentionLSTM
 from src.visualization.visualize import plot_prediction
 from src.config import config
+from src.utils.min_max_scaler import CustomMinMaxScaler
 
 
 def main():
@@ -27,7 +29,12 @@ def main():
     with torch.no_grad():
         predicted_temp = model(input_data_tensor).item()
 
-    print(f"Predicted temperature at {prediction_date} is {predicted_temp:.2f}°C")
+    scaler = CustomMinMaxScaler()
+    scaler.load_params()
+    input_data = np.array([[predicted_temp] * 6])
+    predicted_temp_original_scale = scaler.inverse_transform(input_data)[0][0]
+
+    print(f"Predicted temperature at {prediction_date} is {predicted_temp_original_scale:.2f}°C")
 
     # 可视化预测结果
     dates = [prediction_date - timedelta(hours=i) for i in range(config['sequence_length'])]

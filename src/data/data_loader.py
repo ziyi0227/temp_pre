@@ -2,7 +2,7 @@ import pandas as pd
 import torch
 from torch.utils.data import Dataset, DataLoader
 from sklearn.preprocessing import LabelEncoder
-from sklearn.preprocessing import MinMaxScaler
+from src.utils.min_max_scaler import CustomMinMaxScaler
 
 
 class WeatherDataset(Dataset):
@@ -57,10 +57,9 @@ def load_data(file_path, sequence_length):
     data = data[features]
 
     # 在选择需要的特征之后
-    scaler = MinMaxScaler()  # 或使用StandardScaler()进行标准化
-
-    # 对数据集中的数值型特征进行归一化
-    data[features] = scaler.fit_transform(data[features])
+    scaler = CustomMinMaxScaler()
+    scaler.fit(data[features])
+    data[features] = scaler.transform(data[features])
 
     # 构建数据集
     dataset = WeatherDataset(data, sequence_length)
