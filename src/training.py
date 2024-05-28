@@ -22,8 +22,8 @@ def main():
     plot_training_loss(train_losses, val_losses)
 
     # 保存模型权重
-    torch.save(model.state_dict(), 'model_weights.pth')
-    print("Model weights saved to 'model_weights.pth'")
+    torch.save(model.state_dict(), 'alstm_weights.pth')
+    print("Model weights saved to 'alstm_weights.pth'")
 
 
 if __name__ == '__main__':

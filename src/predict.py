@@ -18,7 +18,7 @@ def main():
     model.to(device)
 
     # 加载模型权重
-    model.load_state_dict(torch.load('model_weights.pth', map_location=device))
+    model.load_state_dict(torch.load('alstm_weights.pth', map_location=device))
     model.eval()
 
     # 预测2024年6月18日下午5点的温度
