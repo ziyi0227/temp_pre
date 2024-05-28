@@ -5,6 +5,7 @@ from src.train.train import train_model
 from src.visualization.visualize import plot_training_loss
 from src.config import config
 
+
 def main():
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     print(f'Using device: {device}')
@@ -23,6 +24,7 @@ def main():
     # 保存模型权重
     torch.save(model.state_dict(), 'model_weights.pth')
     print("Model weights saved to 'model_weights.pth'")
+
 
 if __name__ == '__main__':
     main()
