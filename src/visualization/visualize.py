@@ -1,15 +1,16 @@
 import matplotlib.pyplot as plt
 
 
-def plot_training_loss(losses):
+def plot_training_loss(train_losses, val_losses):
     plt.figure(figsize=(10, 5))
-    plt.plot(losses, label='Training Loss')
+    plt.plot(train_losses, label='Training Loss', color='blue')
+    plt.plot(val_losses, label='Validation Loss', color='orange')
     plt.xlabel('Epoch')
     plt.ylabel('Loss')
-    plt.title('Training Loss over Epochs')
+    plt.title('Training and Validation Loss over Epochs')
     plt.legend()
     plt.grid(True)
-    plt.savefig('training_loss.png')
+    plt.savefig('training_and_validation_loss.png')
     plt.show()
 
 
