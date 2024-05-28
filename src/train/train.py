@@ -6,7 +6,7 @@ from torch.utils.data import DataLoader, random_split
 
 def train_model(model, dataset, num_epochs, learning_rate, device, train_ratio=0.8):
     criterion = nn.MSELoss()
-    optimizer = optim.RMSprop(model.parameters(), lr=learning_rate)
+    optimizer = optim.Adam(model.parameters(), lr=learning_rate)
 
     # Split the dataset into training and validation sets
     train_size = int(train_ratio * len(dataset))
